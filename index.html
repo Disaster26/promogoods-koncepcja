@@ -64,29 +64,27 @@ p{margin:0}
 .menu-open .burger i::before{transform:translateY(6px) rotate(45deg)}
 .menu-open .burger i::after{transform:translateY(-6px) rotate(-45deg)}
 
-/* hero */
-.hero{background:var(--red);color:#fff;position:relative;overflow:hidden}
-.hero .in{max-width:1640px;margin:0 auto;padding:clamp(28px,5vh,64px) var(--pad) clamp(32px,6vh,72px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,4vw,80px);align-items:center;min-height:calc(100svh - var(--hh))}
-.hero h1{font-size:clamp(38px,4.4vw,76px);line-height:1.04;font-weight:600}
-.hero .lead{margin-top:22px;font-size:clamp(17px,1.3vw,20px);line-height:1.55;max-width:34em;color:#FFE9E7}
+/* hero: pełnoekranowe zdjęcie sitodruku, tekst na zdjęciu */
+.hero{padding:0;position:relative;color:#fff;background:#1B1C1F;overflow:hidden;min-height:calc(100svh - var(--hh));display:flex}
+.hero picture,.hero-img{position:absolute;inset:0;width:100%;height:100%}
+.hero-img{object-fit:cover;object-position:62% 50%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,23,26,.93) 0%,rgba(22,23,26,.84) 30%,rgba(22,23,26,.38) 52%,rgba(22,23,26,0) 70%);pointer-events:none}
+.hero .in{position:relative;z-index:1;width:100%;max-width:1640px;margin:0 auto;padding:clamp(40px,7vh,96px) var(--pad);display:flex;align-items:center}
+.hero .txt{max-width:640px;position:relative;padding:34px 0 34px 34px}
+.hero .txt::before,.hero .txt::after{content:"";position:absolute;width:26px;height:26px;border:0 solid var(--red)}
+.hero .txt::before{left:0;top:0;border-left-width:3px;border-top-width:3px}
+.hero .txt::after{left:0;bottom:0;border-left-width:3px;border-bottom-width:3px}
+.pgmark{display:block;width:18px;height:18px;background:var(--red);border-radius:3px;margin-bottom:22px}
+.hero h1{font-size:clamp(38px,4.2vw,72px);line-height:1.04;font-weight:600;text-wrap:balance}
+.hero .lead{margin-top:22px;font-size:clamp(17px,1.25vw,20px);line-height:1.55;max-width:34em;color:#E6E7EA}
 .hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.hero .kont{margin-top:22px;font-size:15.5px;color:#FFE1DE}
+.hero .kont{margin-top:22px;font-size:15.5px;color:#CFD2D6}
 .hero .kont a{color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45)}
 .hero .kont a:hover{border-color:#fff}
-.sheet{position:relative;background:#fff;color:var(--txt);padding:clamp(18px,2vw,30px);box-shadow:0 30px 60px -28px rgba(70,0,0,.55)}
-.sheet .crop{position:absolute;width:22px;height:22px;border-color:#fff;border-style:solid;border-width:0}
-.sheet .c1{left:-30px;top:-30px;border-right-width:1.5px;border-bottom-width:1.5px}
-.sheet .c2{right:-30px;top:-30px;border-left-width:1.5px;border-bottom-width:1.5px}
-.sheet .c3{left:-30px;bottom:-30px;border-right-width:1.5px;border-top-width:1.5px}
-.sheet .c4{right:-30px;bottom:-30px;border-left-width:1.5px;border-top-width:1.5px}
-.sheet .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.sheet figure{margin:0;background:#fff;padding:clamp(10px,1.4vw,22px) 10px 14px;text-align:center}
-.sheet figure svg{width:100%;max-width:170px;aspect-ratio:1;margin:0 auto}
-.sheet figcaption{font-size:14px;font-weight:600;color:var(--mut);margin-top:4px}
-.sheet .note{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;font-size:13.5px;color:var(--mut)}
-.sheet .note b{color:var(--red);font-weight:700}
-.sheet .note .pg{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--txt)}
-.sheet .note .pg i{width:12px;height:12px;background:var(--red);border-radius:2px;display:inline-block}
+.band{background:var(--red);color:#fff}
+.band .in{max-width:1640px;margin:0 auto;padding:16px var(--pad);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 22px;font:600 15.5px/1.2 "Manrope",sans-serif}
+.band span{display:flex;align-items:center;gap:10px}
+.band span::before{content:"";width:9px;height:9px;border-radius:50%;background:#fff;opacity:.85}
 
 /* sekcje */
 section{padding:clamp(64px,8vw,112px) 0}
@@ -105,12 +103,13 @@ section{padding:clamp(64px,8vw,112px) 0}
 .car.drag{cursor:grabbing;scroll-snap-type:none}
 .car.drag *{user-select:none;pointer-events:none}
 .card{scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;overflow:hidden}
-.card .pic{background:var(--g);display:grid;place-items:center;padding:22px;aspect-ratio:4/3;position:relative}
-.card .pic svg{width:62%;max-width:190px;aspect-ratio:1}
-.card .pic::before,.card .pic::after{content:"";position:absolute;width:14px;height:14px;border-color:#BFC4CA;border-style:solid;border-width:0}
+.card .pic{background:var(--g);aspect-ratio:4/3;position:relative;overflow:hidden}
+.card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover .pic img{transform:scale(1.03)}
+.card .pic::before,.card .pic::after{content:"";position:absolute;z-index:1;width:16px;height:16px;border-color:#fff;border-style:solid;border-width:0}
 .card .pic::before{left:12px;top:12px;border-left-width:1.5px;border-top-width:1.5px}
 .card .pic::after{right:12px;bottom:12px;border-right-width:1.5px;border-bottom-width:1.5px}
-.card .txt{padding:20px 20px 22px}
+.card .txt{padding:20px 20px 22px;border-top:3px solid var(--red)}
 .card h3{font-size:23px}
 .card p{margin-top:8px;color:var(--mut);font-size:15.5px;line-height:1.55}
 .car-nav{display:flex;gap:8px}
@@ -185,6 +184,31 @@ ul.meth{margin:0;padding:0}
 .duo .pic{display:flex;gap:18px;margin-top:28px;align-items:flex-end}
 .duo .pic svg{width:120px;height:120px}
 
+/* kompozycje (sekcja czerwona) */
+.red{background:var(--red);color:#fff}
+.red h2{color:#fff;max-width:18em}
+.red .head p{color:#FFE3E0}
+.bento{display:grid;grid-template-columns:5fr 4fr 3fr;grid-template-rows:repeat(2,clamp(220px,19vw,330px));gap:14px}
+.bento figure{margin:0;position:relative;overflow:hidden;background:#B51B13;border:1px solid rgba(255,255,255,.35)}
+.bento img{width:100%;height:100%;object-fit:cover}
+.bento .b1{grid-row:1/3}
+.bento .b4{grid-column:3;grid-row:1/3}
+.bento .b1 img{object-position:50% 40%}
+.bento .b4 img{object-position:50% 55%}
+.bento figcaption{position:absolute;left:12px;bottom:12px;background:#fff;color:var(--ink);font:700 14px/1 "Manrope",sans-serif;padding:9px 12px;border-radius:4px;display:flex;align-items:center;gap:8px}
+.bento figcaption::before{content:"";width:9px;height:9px;background:var(--red);border-radius:2px}
+.red .cap{margin-top:20px;font-size:14.5px;color:#FFD9D5}
+
+/* zdjęcia metod */
+.mphoto{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:clamp(28px,3.4vw,44px)}
+.mphoto figure{margin:0;position:relative;aspect-ratio:4/3;overflow:hidden;background:#DDE0E4}
+.mphoto img{width:100%;height:100%;object-fit:cover}
+.mphoto figcaption{position:absolute;left:0;bottom:0;background:var(--red);color:#fff;font:700 15px/1 "Manrope",sans-serif;padding:11px 14px}
+
+/* poligrafia zdjęcie */
+.polfoto{margin:28px 0 0;aspect-ratio:16/9;overflow:hidden}
+.polfoto img{width:100%;height:100%;object-fit:cover}
+
 /* kontakt */
 .kon{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px);align-items:stretch}
 .kon .copy>p{margin-top:16px;color:var(--mut);font-size:17px}
@@ -219,6 +243,10 @@ ul.meth{margin:0;padding:0}
 @media (max-width:1180px){
   .nav .tel{display:none}
 }
+@media (max-width:760px){
+  .hero::after{background:linear-gradient(180deg,rgba(22,23,26,.12) 0%,rgba(22,23,26,.35) 30%,rgba(22,23,26,.86) 56%,rgba(22,23,26,.95) 100%)}
+  .hero-img{object-position:40% 30%}
+}
 @media (max-width:1020px){
   :root{--hh:62px}
   .burger{display:block}
@@ -227,9 +255,10 @@ ul.meth{margin:0;padding:0}
   .nav a{font-size:20px;padding:17px 4px;border-bottom:1px solid var(--line);border-radius:0;font-family:"Lora",Georgia,serif;font-weight:600}
   .nav .tel{display:block;margin:0;font-family:"Manrope",sans-serif;font-size:18px}
   .nav .cta{margin:20px 0 0;text-align:center;border-radius:6px;font-family:"Manrope",sans-serif;font-size:17px;border:0}
-  .hero .in{grid-template-columns:1fr;min-height:calc(100svh - var(--hh));align-content:space-between;gap:26px}
-  .sheet figure svg{max-width:130px}
   .car{grid-auto-columns:calc((100% - 20px)/2.15)}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .bento figure{aspect-ratio:4/3}
+  .bento .b1,.bento .b4{grid-row:auto;grid-column:1/-1;aspect-ratio:16/10}
   .meth{grid-template-columns:1fr 1fr}
   .meth li:not(:nth-child(3n+1)){padding-left:0;border-left:0}
   .meth li:nth-child(2n){padding-left:24px;border-left:1px solid #CDD1D6}
@@ -240,24 +269,23 @@ ul.meth{margin:0;padding:0}
   body{font-size:16px}
   .logo .sq{width:38px;height:38px}
   .logo .wm{font-size:20px}
-  .hero .in{padding-top:22px;padding-bottom:22px;gap:20px}
   .hero h1{font-size:clamp(30px,8.6vw,38px)}
   .hero .lead{margin-top:14px;font-size:16.5px;line-height:1.5}
   .hero .acts{margin-top:24px;gap:10px}
   .hero .acts .btn{flex:1 1 100%;min-height:50px}
   .hero .kont{margin-top:14px;font-size:14.5px}
-  .sheet{padding:10px;margin:0 6px}
-  .sheet .grid{grid-template-columns:repeat(3,1fr)}
-  .sheet figure:nth-child(n+4){display:none}
-  .sheet figure{padding:8px 4px 8px}
-  .sheet figure svg{max-width:92px}
-  .sheet figcaption{font-size:12px;margin-top:0}
-  .sheet .note{display:none}
-  .sheet .crop{width:14px;height:14px}
-  .sheet .c1{left:-18px;top:-18px}.sheet .c2{right:-18px;top:-18px}.sheet .c3{left:-18px;bottom:-18px}.sheet .c4{right:-18px;bottom:-18px}
   .head{flex-direction:column;align-items:flex-start}
   .car-nav{display:none}
   .car{grid-auto-columns:82%;gap:14px}
+  .hero .in{align-items:flex-end;padding-top:24px;padding-bottom:22px}
+  .hero .txt{padding:24px 0 22px 20px}
+  .hero .txt::before,.hero .txt::after{width:18px;height:18px}
+  .pgmark{width:14px;height:14px;margin-bottom:16px}
+  .band .in{justify-content:flex-start;gap:8px 16px;font-size:14px;padding:13px var(--pad)}
+  .bento{gap:10px}
+  .bento figcaption{font-size:12.5px;padding:7px 9px;left:8px;bottom:8px}
+  .mphoto{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .mphoto figure{scroll-snap-align:start}
   .meth{grid-template-columns:1fr}
   .meth li,.meth li:nth-child(2n){padding:22px 0;border-left:0}
   .search form{flex-direction:column}
@@ -270,106 +298,28 @@ ul.meth{margin:0;padding:0}
   .foot .row>div:first-child{grid-column:1/-1}
 }
 @media (max-width:640px) and (max-height:700px){
-  .hero .in{padding-top:16px;padding-bottom:18px;gap:16px}
-  .hero h1{font-size:29px}
+  .hero h1{font-size:28px}
   .hero .lead{font-size:15.5px}
-  .hero .acts{margin-top:24px}
-  .sheet figure svg{max-width:72px}
-}
-@media (max-width:640px) and (min-height:800px){
-  .sheet figure:nth-child(n+4){display:block}
-  .sheet figure svg{max-width:88px}
+  .hero .txt{padding-top:20px;padding-bottom:18px}
+  .pgmark{margin-bottom:14px}
 }
 @media (min-width:1600px){
   :root{--max:1400px}
-  .sheet figure svg{max-width:190px}
 }
 @media (min-width:2200px){
   .hero .in{max-width:2040px}
+  .hero .txt{max-width:820px}
   .hero h1{font-size:94px}
   .hero .lead{font-size:23px}
   .hero .btn{min-height:60px;font-size:18px;padding:0 32px}
   .hero .kont{font-size:18px}
-  .sheet figure svg{max-width:240px}
-  .sheet figcaption{font-size:16px}
-  .sheet .note{font-size:15px}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#tresc">Przejdź do treści</a>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="i-kubek" viewBox="0 0 120 120">
-      <path d="M81 46h7a14 14 0 0 1 0 28h-7" fill="none" stroke="#212327" stroke-width="9"/>
-      <path d="M81 46h7a14 14 0 0 1 0 28h-7" fill="none" stroke="#fff" stroke-width="4.5"/>
-      <path d="M28 30h55v58a9 9 0 0 1-9 9H37a9 9 0 0 1-9-9z" fill="#fff" stroke="#212327" stroke-width="2.6" stroke-linejoin="round"/>
-      <path d="M73 31.3h8.7V88a7.7 7.7 0 0 1-7.7 7.7h-1z" fill="#ECEEF1"/>
-      <path d="M29.3 37h52.4" stroke="#212327" stroke-width="1.4" opacity=".35"/>
-      <rect x="39.5" y="50" width="32" height="32" rx="2" fill="none" stroke="#DA251C" stroke-width="1.3" stroke-dasharray="3 2.6"/>
-      <rect x="44" y="54.5" width="23" height="23" rx="3.5" fill="#DA251C"/>
-    </symbol>
-    <symbol id="i-koszulka" viewBox="0 0 120 120">
-      <path d="M43 20 30 25 12 40l11 15 9-6v51h56V49l9 6 11-15-18-15-13-5c-3.5 8-10 12-17 12s-13.5-4-17-12z" fill="#fff" stroke="#212327" stroke-width="2.6" stroke-linejoin="round"/>
-      <path d="M43 20c3.5 8 10 12 17 12s13.5-4 17-12" fill="none" stroke="#212327" stroke-width="2.6"/>
-      <path d="M32 49 24.5 38M88 49l7.5-11" stroke="#212327" stroke-width="1.4" opacity=".35"/>
-      <path d="M78 33v67h10V49z" fill="#ECEEF1"/>
-      <rect x="46" y="45" width="28" height="28" rx="2" fill="none" stroke="#DA251C" stroke-width="1.3" stroke-dasharray="3 2.6"/>
-      <rect x="50" y="49" width="20" height="20" rx="3" fill="#DA251C"/>
-    </symbol>
-    <symbol id="i-dlugopis" viewBox="0 0 120 120">
-      <g transform="rotate(-38 60 60)">
-        <rect x="10" y="55" width="10" height="10" rx="2.5" fill="#fff" stroke="#212327" stroke-width="2.4"/>
-        <path d="M19 53h69l16 7-16 7H19z" fill="#fff" stroke="#212327" stroke-width="2.6" stroke-linejoin="round"/>
-        <path d="M88 53v14" stroke="#212327" stroke-width="2"/>
-        <path d="M104 60h4" stroke="#212327" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M19 62.5h69V67H19z" fill="#ECEEF1"/>
-        <rect x="24" y="46" width="34" height="5" rx="2.5" fill="#fff" stroke="#212327" stroke-width="2.2"/>
-        <rect x="47" y="56" width="34" height="8" rx="1.5" fill="#DA251C"/>
-      </g>
-    </symbol>
-    <symbol id="i-torba" viewBox="0 0 120 120">
-      <path d="M44 46V33a16 16 0 0 1 32 0v13" fill="none" stroke="#212327" stroke-width="7"/>
-      <path d="M44 46V33a16 16 0 0 1 32 0v13" fill="none" stroke="#fff" stroke-width="3"/>
-      <path d="M25 44h70l-2 56H27z" fill="#fff" stroke="#212327" stroke-width="2.6" stroke-linejoin="round"/>
-      <path d="M84 45.3h9.6l-1.9 53.4H84z" fill="#ECEEF1"/>
-      <rect x="42" y="56" width="36" height="36" rx="2" fill="none" stroke="#DA251C" stroke-width="1.3" stroke-dasharray="3 2.6"/>
-      <rect x="47" y="61" width="26" height="26" rx="3.5" fill="#DA251C"/>
-    </symbol>
-    <symbol id="i-usb" viewBox="0 0 120 120">
-      <rect x="11" y="51" width="15" height="20" rx="2" fill="#D3D7DC" stroke="#212327" stroke-width="2.4"/>
-      <path d="M15 57h3M15 64h3" stroke="#212327" stroke-width="2"/>
-      <rect x="24" y="36" width="80" height="50" rx="7" fill="#fff" stroke="#212327" stroke-width="2.6"/>
-      <path d="M92 37.3h4.7a6 6 0 0 1 6 6v35.4a6 6 0 0 1-6 6H92z" fill="#ECEEF1"/>
-      <rect x="49" y="44" width="34" height="34" rx="2" fill="none" stroke="#DA251C" stroke-width="1.3" stroke-dasharray="3 2.6"/>
-      <rect x="53.5" y="48.5" width="25" height="25" rx="3.5" fill="#DA251C"/>
-    </symbol>
-    <symbol id="i-parasol" viewBox="0 0 120 120">
-      <path d="M60 62v32a7 7 0 0 1-14 0" fill="none" stroke="#212327" stroke-width="3.2" stroke-linecap="round"/>
-      <path d="M12 62C16 38 36 22 60 22s44 16 48 40c-6-4-13-4-17 0-5-4-13-4-16 0-4-4-11-4-15 0-4-4-11-4-15 0-3-4-11-4-16 0-4-4-11-4-17 0z" fill="#fff" stroke="#212327" stroke-width="2.6" stroke-linejoin="round"/>
-      <path d="M60 22c-4 0-12 18-15 40M60 22c4 0 12 18 15 40" fill="none" stroke="#212327" stroke-width="1.6"/>
-      <path d="M60 22c4 0 12 18 15 40-4-4-11-4-15 0z" fill="#DA251C"/>
-      <path d="M60 22v-6" stroke="#212327" stroke-width="3" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-pudelko" viewBox="0 0 120 120">
-      <path d="M22 50h76v48a3 3 0 0 1-3 3H25a3 3 0 0 1-3-3z" fill="#fff" stroke="#212327" stroke-width="2.6" stroke-linejoin="round"/>
-      <path d="M86 51.3h10.7V98a1.7 1.7 0 0 1-1.7 1.7h-9z" fill="#ECEEF1"/>
-      <rect x="16" y="36" width="88" height="15" rx="3" fill="#fff" stroke="#212327" stroke-width="2.6"/>
-      <path d="M56 36h8v65h-8z" fill="#DA251C"/>
-      <path d="M60 36c-6-12-22-14-22-5 0 6 12 6 22 5zM60 36c6-12 22-14 22-5 0 6-12 6-22 5z" fill="#fff" stroke="#DA251C" stroke-width="3" stroke-linejoin="round"/>
-      <rect x="34" y="62" width="16" height="16" rx="2.5" fill="#DA251C"/>
-    </symbol>
-    <symbol id="i-zegar" viewBox="0 0 120 120">
-      <circle cx="60" cy="60" r="42" fill="#fff" stroke="#212327" stroke-width="2.6"/>
-      <circle cx="60" cy="60" r="35" fill="none" stroke="#212327" stroke-width="1.2" opacity=".35"/>
-      <path d="M60 28v6M60 86v6M28 60h6M86 60h6" stroke="#212327" stroke-width="2.6" stroke-linecap="round"/>
-      <path d="M60 60V40M60 60l13 8" stroke="#212327" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="60" cy="60" r="3.2" fill="#212327"/>
-      <rect x="50" y="72" width="20" height="10" rx="2" fill="#DA251C"/>
-    </symbol>
-    </defs>
-</svg>
+
 
 <header class="top" id="top">
   <div class="in">
@@ -391,31 +341,27 @@ ul.meth{margin:0;padding:0}
 </header>
 
 <main id="tresc">
-<section class="hero" aria-labelledby="h1" style="padding:0">
+<section class="hero" aria-labelledby="h1">
+  <picture>
+    <source media="(max-width:760px)" srcset="img/hero-tel-800.webp 800w, img/hero-tel-1100.webp 1100w, img/hero-tel-1500.webp 1500w, img/hero-tel-1720.webp 1720w" sizes="120vw" width="1720" height="2868">
+    <img class="hero-img" src="img/hero-1920.webp" srcset="img/hero-1280.webp 1280w, img/hero-1920.webp 1920w, img/hero-2560.webp 2560w, img/hero-3200.webp 3200w, img/hero-3840.webp 3840w" sizes="100vw" width="3840" height="2560" fetchpriority="high" alt="Sitodruk: przeciąganie farby rakielem przez sito na koszulkę">
+  </picture>
   <div class="in">
-    <div>
+    <div class="txt">
+      <span class="pgmark" aria-hidden="true"></span>
       <h1 id="h1">Gadżety reklamowe z&nbsp;nadrukiem prosto z&nbsp;Krakowa</h1>
       <p class="lead">Państwa znak na rzeczach, po które ludzie sięgają codziennie: kubkach, długopisach, odzieży, torbach i&nbsp;upominkach. Dobieramy produkt, wyceniamy go razem ze znakowaniem i&nbsp;dostarczamy gotowy.</p>
       <div class="acts">
-        <a class="btn btn-white" href="#wycena">Zapytaj o&nbsp;wycenę z&nbsp;nadrukiem</a>
-        <a class="btn btn-line" href="#katalog">Szukaj w&nbsp;katalogu</a>
+        <a class="btn btn-red" href="#wycena">Zapytaj o&nbsp;wycenę z&nbsp;nadrukiem</a>
+        <a class="btn btn-line" href="#oferta">Zobacz ofertę</a>
       </div>
       <p class="kont">Telefon <a href="tel:+48600088307">600 088 307</a> lub <a href="mailto:biuro@promogoods.pl">biuro@promogoods.pl</a></p>
     </div>
-    <div class="sheet" aria-label="Przykładowe produkty z polem na logo">
-      <i class="crop c1"></i><i class="crop c2"></i><i class="crop c3"></i><i class="crop c4"></i>
-      <div class="grid">
-        <figure><svg role="img" aria-label="Kubek"><use href="#i-kubek"/></svg><figcaption>Kubek</figcaption></figure>
-        <figure><svg role="img" aria-label="Koszulka"><use href="#i-koszulka"/></svg><figcaption>Koszulka</figcaption></figure>
-        <figure><svg role="img" aria-label="Torba"><use href="#i-torba"/></svg><figcaption>Torba</figcaption></figure>
-        <figure><svg role="img" aria-label="Długopis"><use href="#i-dlugopis"/></svg><figcaption>Długopis</figcaption></figure>
-        <figure><svg role="img" aria-label="Pamięć USB"><use href="#i-usb"/></svg><figcaption>Pamięć USB</figcaption></figure>
-        <figure><svg role="img" aria-label="Parasol"><use href="#i-parasol"/></svg><figcaption>Parasol</figcaption></figure>
-      </div>
-      <div class="note"><span class="pg"><i></i>pole znakowania</span><span>tampodruk, sitodruk, transfer, grawer, haft, druk cyfrowy</span></div>
-    </div>
   </div>
 </section>
+<div class="band" aria-label="Metody znakowania">
+  <div class="in"><span>Tampodruk</span><span>Sitodruk</span><span>Transfer</span><span>Grawer laserowy</span><span>Haft</span><span>Druk cyfrowy</span></div>
+</div>
 
 <section id="oferta">
   <div class="wrap">
@@ -432,17 +378,36 @@ ul.meth{margin:0;padding:0}
     </div>
     <div class="car-wrap">
       <div class="car" tabindex="0" aria-label="Kategorie produktów (przesuń)">
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-koszulka"/></svg></div><div class="txt"><h3>Odzież reklamowa</h3><p>T-shirty i&nbsp;koszulki polo z&nbsp;nadrukiem, czapki z&nbsp;haftem lub nadrukiem, tekstylia na eventy i&nbsp;dla pracowników.</p></div></article>
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-kubek"/></svg></div><div class="txt"><h3>Ceramika reklamowa</h3><p>Kubki białe i&nbsp;dwukolorowe, kubki z&nbsp;sitkiem, filiżanki. Logo na naczyniu, z&nbsp;którego klient pije codziennie.</p></div></article>
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-dlugopis"/></svg></div><div class="txt"><h3>Artykuły piśmiennicze</h3><p>Długopisy reklamowe, wieczne pióra, ołówki, eleganckie zestawy w&nbsp;etui, teczki i&nbsp;artykuły biurowe.</p></div></article>
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-usb"/></svg></div><div class="txt"><h3>Pamięci USB i&nbsp;powerbanki</h3><p>Pamięci flash w&nbsp;różnych formach, także w&nbsp;kształcie karty, i&nbsp;powerbanki z&nbsp;Państwa logo.</p></div></article>
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-torba"/></svg></div><div class="txt"><h3>Torby i&nbsp;plecaki</h3><p>Torby podróżne, sportowe i&nbsp;na laptop, plecaki, kosmetyczki, siatki na zakupy i&nbsp;eko-produkty.</p></div></article>
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-parasol"/></svg></div><div class="txt"><h3>Parasole, smycze, breloki</h3><p>Parasole z&nbsp;nadrukiem, smycze reklamowe i&nbsp;breloki, czyli drobiazgi, które długo zostają w&nbsp;użyciu.</p></div></article>
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-zegar"/></svg></div><div class="txt"><h3>Prezenty firmowe</h3><p>Upominki ze skóry naturalnej i&nbsp;ekologicznej, zegarki i&nbsp;zegary, akcesoria do wina, słodycze reklamowe, produkty markowe.</p></div></article>
-        <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#i-pudelko"/></svg></div><div class="txt"><h3>Produkcje specjalne</h3><p>Gdy potrzeba czegoś nietypowego, możemy zaprojektować i&nbsp;wykonać dowolny produkt reklamowy.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/transfer-960.webp" srcset="img/transfer-640.webp 640w, img/transfer-960.webp 960w, img/transfer-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="1839" loading="lazy" decoding="async" alt="Koszulka z nadrukiem w rękach pracownika drukarni"></div><div class="txt"><h3>Odzież reklamowa</h3><p>T-shirty i&nbsp;koszulki polo z&nbsp;nadrukiem, czapki z&nbsp;haftem, tekstylia na eventy i&nbsp;dla pracowników.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/termos-960.webp" srcset="img/termos-640.webp 640w, img/termos-960.webp 960w, img/termos-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="2275" loading="lazy" decoding="async" alt="Czerwony kubek termiczny na kocu piknikowym"></div><div class="txt"><h3>Kubki i&nbsp;termosy</h3><p>Kubki ceramiczne, kubki termiczne i&nbsp;termosy. Logo na naczyniu, z&nbsp;którego klient pije codziennie.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/butelka-960.webp" srcset="img/butelka-640.webp 640w, img/butelka-960.webp 960w, img/butelka-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="720" loading="lazy" decoding="async" alt="Aluminiowa butelka na szarym tle"></div><div class="txt"><h3>Butelki i&nbsp;bidony</h3><p>Aluminiowe i&nbsp;stalowe butelki, bidony sportowe. Grawer albo nadruk dookoła.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/notes-960.webp" srcset="img/notes-640.webp 640w, img/notes-960.webp 960w, img/notes-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="853" loading="lazy" decoding="async" alt="Otwarty notes i długopis na białym tle"></div><div class="txt"><h3>Notesy i&nbsp;teczki</h3><p>Notesy w&nbsp;twardej oprawie, notatniki, teczki i&nbsp;artykuły biurowe z&nbsp;logo na okładce.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/dlugopisy-960.webp" srcset="img/dlugopisy-640.webp 640w, img/dlugopisy-960.webp 960w, img/dlugopisy-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="853" loading="lazy" decoding="async" alt="Pióra i długopisy w etui"></div><div class="txt"><h3>Długopisy i&nbsp;pióra</h3><p>Długopisy reklamowe, wieczne pióra, ołówki i&nbsp;eleganckie zestawy w&nbsp;etui.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/powerbank-960.webp" srcset="img/powerbank-640.webp 640w, img/powerbank-960.webp 960w, img/powerbank-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="960" loading="lazy" decoding="async" alt="Biały powerbank z kablem na betonowym blacie"></div><div class="txt"><h3>Elektronika</h3><p>Powerbanki, pamięci USB, kable i&nbsp;ładowarki z&nbsp;Państwa logo.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/parasol-960.webp" srcset="img/parasol-640.webp 640w, img/parasol-960.webp 960w, img/parasol-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="1920" loading="lazy" decoding="async" alt="Czerwony parasol na ulicy w deszczu"></div><div class="txt"><h3>Parasole</h3><p>Parasole z&nbsp;nadrukiem na panelach, do tego smycze i&nbsp;breloki, które długo zostają w&nbsp;użyciu.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/prezent-960.webp" srcset="img/prezent-640.webp 640w, img/prezent-960.webp 960w, img/prezent-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="853" loading="lazy" decoding="async" alt="Prezent w kartonowym pudełku z czerwoną wstążką"></div><div class="txt"><h3>Prezenty firmowe</h3><p>Zestawy upominkowe, upominki ze skóry, akcesoria do wina, słodycze reklamowe, produkty markowe.</p></div></article>
+        <article class="card"><div class="pic"><img src="img/kolory-960.webp" srcset="img/kolory-640.webp 640w, img/kolory-960.webp 960w, img/kolory-1280.webp 1280w" sizes="(max-width:640px) 100vw, (max-width:1020px) 46vw, 25vw" width="1280" height="855" loading="lazy" decoding="async" alt="Wzornik kolorów do dopasowania barwy logo"></div><div class="txt"><h3>Produkcje specjalne</h3><p>Gdy potrzeba czegoś nietypowego, możemy zaprojektować i&nbsp;wykonać dowolny produkt reklamowy.</p></div></article>
       </div>
     </div>
     <p class="more">Na targi, konferencje i&nbsp;spotkania z&nbsp;klientami, na święta i&nbsp;dla zespołu. Podane w&nbsp;katalogu ceny są cenami netto bez znakowania; cenę z&nbsp;nadrukiem i&nbsp;termin podajemy w&nbsp;odpowiedzi na zapytanie.</p>
+  </div>
+</section>
+
+<section class="red" id="znak" aria-labelledby="h-znak">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2 id="h-znak">Państwa znak na rzeczach, po które ludzie sięgają codziennie</h2>
+        <p>Koszulka na targach, kubek na biurku klienta, torba na zakupach, czapka na firmowym wyjeździe. Przed znakowaniem pokazujemy, jak logo będzie wyglądać na produkcie.</p>
+      </div>
+    </div>
+    <div class="bento">
+      <figure class="b1"><img src="img/koszulka-960.webp" srcset="img/koszulka-640.webp 640w, img/koszulka-960.webp 960w, img/koszulka-1280.webp 1280w" sizes="(max-width:640px) 92vw, 40vw" width="1280" height="853" loading="lazy" decoding="async" alt="Biała koszulka z czerwonym logo na piersi"><figcaption>Koszulka, sitodruk</figcaption></figure>
+      <figure class="b2"><img src="img/kubek-960.webp" srcset="img/kubek-640.webp 640w, img/kubek-960.webp 960w, img/kubek-1280.webp 1280w" sizes="(max-width:640px) 46vw, 32vw" width="1280" height="853" loading="lazy" decoding="async" alt="Biały kubek z czerwonym logo"><figcaption>Kubek ceramiczny, nadruk</figcaption></figure>
+      <figure class="b3"><img src="img/czapka-960.webp" srcset="img/czapka-640.webp 640w, img/czapka-960.webp 960w, img/czapka-1280.webp 1280w" sizes="(max-width:640px) 46vw, 32vw" width="1280" height="1280" loading="lazy" decoding="async" alt="Biała czapka z daszkiem"><figcaption>Czapka z&nbsp;daszkiem, haft</figcaption></figure>
+      <figure class="b4"><img src="img/torba-960.webp" srcset="img/torba-640.webp 640w, img/torba-960.webp 960w, img/torba-1280.webp 1280w" sizes="(max-width:1020px) 92vw, 40vw" width="1280" height="853" loading="lazy" decoding="async" alt="Bawełniana torba z czerwonym logo"><figcaption>Torba bawełniana, sitodruk</figcaption></figure>
+    </div>
+    <p class="cap">Zdjęcia w&nbsp;podglądzie są poglądowe (wizualizacja oznakowania). Na docelowej stronie: Państwa realizacje i&nbsp;zdjęcia produktów.</p>
   </div>
 </section>
 
@@ -453,6 +418,11 @@ ul.meth{margin:0;padding:0}
         <h2 class="mark">Metody znakowania</h2>
         <p>Do każdego produktu dobieramy metodę, która najlepiej odda Państwa logo na danym materiale.</p>
       </div>
+    </div>
+    <div class="mphoto">
+      <figure><img src="img/sitodruk-960.webp" srcset="img/sitodruk-640.webp 640w, img/sitodruk-960.webp 960w, img/sitodruk-1280.webp 1280w" sizes="(max-width:640px) 82vw, 33vw" width="1280" height="853" loading="lazy" decoding="async" alt="Sitodruk: farba przeciągana rakielem przez sito"><figcaption>Sitodruk</figcaption></figure>
+      <figure><img src="img/haft-960.webp" srcset="img/haft-640.webp 640w, img/haft-960.webp 960w, img/haft-1280.webp 1280w" sizes="(max-width:640px) 82vw, 33vw" width="1280" height="853" loading="lazy" decoding="async" alt="Haft logo na czapce w maszynie hafciarskiej"><figcaption>Haft</figcaption></figure>
+      <figure><img src="img/grawer-960.webp" srcset="img/grawer-640.webp 640w, img/grawer-960.webp 960w, img/grawer-1280.webp 1280w" sizes="(max-width:640px) 82vw, 33vw" width="1280" height="1920" loading="lazy" decoding="async" alt="Głowica lasera grawerującego"><figcaption>Grawerowanie laserowe</figcaption></figure>
     </div>
     <ul class="meth">
       <li><h3>Tampodruk</h3><p>Farba przenoszona silikonowym tamponem, dzięki czemu trafia także na małe i&nbsp;wypukłe powierzchnie.</p><small>Długopisy, breloki, pamięci USB</small></li>
@@ -535,6 +505,7 @@ ul.meth{margin:0;padding:0}
       <h2>Oferta czytelna i&nbsp;łatwo dostępna</h2>
       <p>Tak przygotowujemy ofertę: wybrane, sprawdzone produkty zamiast tysięcy przypadkowych pozycji, z&nbsp;cenami i&nbsp;dostępnością w&nbsp;jednym miejscu. Stawiamy na sprawdzone i&nbsp;najpopularniejsze produkty, ale śledzimy też nowe trendy.</p>
       <p>Zajmujemy się dostawą i&nbsp;znakowaniem wszelkich materiałów reklamowych, a&nbsp;przy specjalnych potrzebach projektujemy i&nbsp;wykonujemy produkty od podstaw.</p>
+      <figure class="polfoto"><img src="img/rednotes-960.webp" srcset="img/rednotes-640.webp 640w, img/rednotes-960.webp 960w, img/rednotes-1280.webp 1280w" sizes="(max-width:1020px) 92vw, 45vw" width="1280" height="853" loading="lazy" decoding="async" alt="Notes na spirali na czerwonym tle"></figure>
     </div>
   </div>
 </section>
@@ -570,7 +541,7 @@ ul.meth{margin:0;padding:0}
       <div><b>Oferta</b><br><a href="#oferta">Gadżety reklamowe</a><br><a href="#znakowanie">Znakowanie</a><br><a href="#poligrafia">Poligrafia</a><br><a href="#katalog">Katalog</a></div>
     </div>
     <div class="bot">
-      <span>&copy; 2026 PromoGoods Krzysztof Madej &middot; Polityka prywatności</span>
+      <span>&copy; 2026 PromoGoods Krzysztof Madej &middot; Polityka prywatności &middot; Zdjęcia poglądowe: Unsplash</span>
       <a class="wylinka-badge" href="https://wylinka.pl/?utm_source=promogoods.pl&amp;utm_medium=stopka&amp;utm_campaign=wykonanie" rel="noopener" title="Strona wykonana przez Wylinka"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" fill="currentColor"><path d="M9.8 22.8l-1.2-7.9 2.2-3.7 15.5 4.6-.5 1.5-7.2 5.5 4.7 15.6 5-15.6 7 0 4.1 12.7-4.2-.9-2.6 1.8-.8-2.2-5.3 15.6-4.3 0 .4 .2-2.1 2.8-1.3-1.1 1.1-1.4-3.1 .2-.1-1.7 2.2-.1-5.7-16.5-4.8 .6-.8 3.1 0 .5-.3 .5 .8 2.2-1.6 .5-.4-1.3-.8 1.6-1.5-.8 .8-1.6-1.4 .6-.6-1.6 2.3-.8 .2-.4 1.3-4.8 5.9-.8-2.4-6.9zM15.2 13.7l-.1-.4-.4 .8-.1 .8 .1 1 .1 .4 .3 .7 .3-.9 .1-.7 0-.8z"/><path class="wy-pod" d="M37.1 49.8l-4.5-13.3 2.6-1.8 4.2 .9 .9 2.8 3-9.7 0-.5 .1-.8 3.2-8.4 .5-1 .6-1 .9-1.1 1.3-1 1.1-.7 1.4-.5 1.4-.3 .7 0 .9 0 1.2 .3 1.4 .6 .8 .5 .7 .7 .6 .7 .5 .9 .3 .9 .1 .9 0 .8-.2 .9-.5 .9-.5 .6-.7 .5-.7 .3-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.6-.1-.6-.3-.7-.4-.5-.4-.4-.5-.3-.6-.3-.7 0-.7 .1-.6 .1-.5 .4-.5 .5-.3 .5-.2 .7-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1-2.1-2.8 .4-.2z"/><path class="wy-old" d="M40.8 50l.4-.2-4.1 0-4.2-12.5 2.5-1.7 4.3 .9 .6 1.9 .6-1.6 0-.3 2.4-7.8 0-.5 .1-.8 3.2-8.4 .4-.8 .6-.9 .9-1.2 .9-.9 1.3-.8 1.4-.6 1.2-.3 1.4-.1 1.3 .1 .6 .2 .8 .3 1.1 .6 .9 .7 .7 .9 .5 .9 .3 .9 .1 1.1-.1 .9-.3 .9-.4 .7-.6 .7-.6 .4-.6 .2-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.5-.1-.6-.2-.6-.3-.5-.4-.5-.5-.3-.6-.3-.7-.1-.6 0-.6 .1-.6 .3-.6 .5-.3 .4-.2 .5-.1 .5-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1zM49.6 17.1l.6 1.7-1.5 1.9 .4 .4 1.8-2.1-.7-2.1zM48.1 28.3l.5 1.8-1.7 1.8 .4 .4 1.9-2-.6-2.2zM37.9 41.7l1.7-1.5-.4-.4-1.7 1.4zM42.6 38.7l-1.5 2.8 1.1 2-1.3 2.6 .5 .2 1.5-2.8-1.1-2 1.4-2.5z"/></svg><span>wykonanie: <b>Wylinka</b></span></a>
     </div>
   </div>
